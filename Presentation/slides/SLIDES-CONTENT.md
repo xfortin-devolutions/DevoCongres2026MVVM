@@ -215,7 +215,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 **INotifyPropertyChanged**:
 - Interface qui notifie la View des changements
 - Déclenche la mise à jour automatique de l'UI
-- Implémenté automatiquement par CommunityToolkit.Mvvm
+- Implémenté automatiquement par CommunityToolkit.Mvvm (RDM utilise Devolutions.MvvmToolkit)
 
 **Contenu EN (20pt, italique)**:
 
@@ -227,7 +227,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 **INotifyPropertyChanged**:
 - Interface that notifies the View of changes
 - Triggers automatic UI updates
-- Automatically implemented by CommunityToolkit.Mvvm
+- Automatically implemented by CommunityToolkit.Mvvm (RDM uses Devolutions.MvvmToolkit)
 
 **Exemple de code** (non bilingue):
 ```csharp
@@ -255,6 +255,9 @@ private string name;
 
 **Titre FR (32pt, gras)**: CommunityToolkit.Mvvm
 **Titre EN (20pt, italique)**: CommunityToolkit.Mvvm
+
+**Note FR (18pt)**: *(RDM utilise notre propre implémentation: Devolutions.MvvmToolkit)*
+**Note EN (16pt, italique)**: *(RDM uses our own implementation: Devolutions.MvvmToolkit)*
 
 **Contenu FR (24pt)**:
 
