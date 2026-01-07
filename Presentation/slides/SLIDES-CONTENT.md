@@ -38,18 +38,16 @@ MVVM - Cast off the shackles of event-driven development
 **Titre EN (20pt, italique)**: The challenges of event-driven programming
 
 **Contenu FR (24pt)**:
-- Logique dispersée dans de nombreux event handlers
-- Code-behind volumineux et difficile à maintenir
-- Couplage fort entre l'interface et la logique métier
-- Tests unitaires complexes (nécessite des contrôles UI)
+- **Couplage fort entre l'interface et la logique métier**
 - Synchronisation manuelle entre contrôles
+- Code-behind volumineux et difficile à maintenir
+- Tests unitaires complexes (nécessite des contrôles UI)
 
 **Contenu EN (20pt, italique)**:
-- Logic scattered across many event handlers
-- Large code-behind files, difficult to maintain
-- Tight coupling between interface and business logic
-- Complex unit testing (requires UI controls)
+- **Tight coupling between interface and business logic**
 - Manual synchronization between controls
+- Large code-behind files, difficult to maintain
+- Complex unit testing (requires UI controls)
 
 ---
 
@@ -70,46 +68,68 @@ MVVM - Cast off the shackles of event-driven development
 
 ---
 
-## Slide 4: Définition MVVM - Les 3 couches
+## Slide 4: Sous-titre - Architecture MVVM
 
-**Titre FR (32pt, gras)**: Architecture MVVM
-**Titre EN (20pt, italique)**: MVVM Architecture
+**Titre FR (36pt, gras)**: Architecture MVVM
+**Titre EN (28pt, italique)**: MVVM Architecture
+
+**Sous-titre FR (28pt)**: Les 3 couches
+**Sous-titre EN (24pt, italique)**: The 3 layers
+
+---
+
+## Slide 5: Couche Model
+
+**Titre FR (32pt, gras)**: Model
+**Titre EN (20pt, italique)**: Model
 
 **Contenu FR (24pt)**:
-
-**Model**
 - Représente les données et la logique métier
 - Indépendant de l'interface utilisateur
 
-**View**
+**Contenu EN (20pt, italique)**:
+- Represents data and business logic
+- Independent of user interface
+
+---
+
+## Slide 6: Couche View
+
+**Titre FR (32pt, gras)**: View
+**Titre EN (20pt, italique)**: View
+
+**Contenu FR (24pt)**:
 - Interface utilisateur (XAML)
 - Affiche les données, capture les interactions utilisateur
 - Ne contient PAS de logique métier
+- Communique avec le ViewModel via Data Binding
 
-**ViewModel**
+**Contenu EN (20pt, italique)**:
+- User interface (XAML)
+- Displays data, captures user interactions
+- Contains NO business logic
+- Communicates with ViewModel via Data Binding
+
+---
+
+## Slide 7: Couche ViewModel
+
+**Titre FR (32pt, gras)**: ViewModel
+**Titre EN (20pt, italique)**: ViewModel
+
+**Contenu FR (24pt)**:
 - Pont entre Model et View
 - Expose les données et commandes pour la View
 - Implémente INotifyPropertyChanged pour la réactivité
 
 **Contenu EN (20pt, italique)**:
-
-**Model**
-- Represents data and business logic
-- Independent of user interface
-
-**View**
-- User interface (XAML)
-- Displays data, captures user interactions
-- Contains NO business logic
-
-**ViewModel**
 - Bridge between Model and View
 - Exposes data and commands for the View
 - Implements INotifyPropertyChanged for reactivity
 
 ---
 
-## Slide 5: Diagramme - Event-driven vs MVVM
+## Slide 8: Diagramme - Event-driven vs MVVM
 
 **Titre FR (32pt, gras)**: Comparaison architecturale
 **Titre EN (20pt, italique)**: Architectural comparison
@@ -137,7 +157,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 
 ---
 
-## Slide 6: Avantages MVVM
+## Slide 9: Avantages MVVM
 
 **Titre FR (32pt, gras)**: Pourquoi MVVM?
 **Titre EN (20pt, italique)**: Why MVVM?
@@ -180,7 +200,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 
 ---
 
-## Slide 7: Data Binding et INotifyPropertyChanged
+## Slide 10: Data Binding et INotifyPropertyChanged
 
 **Titre FR (32pt, gras)**: Le cœur de MVVM: Data Binding
 **Titre EN (20pt, italique)**: The heart of MVVM: Data Binding
@@ -231,7 +251,7 @@ private string name;
 
 ---
 
-## Slide 8: CommunityToolkit.Mvvm - Source Generators
+## Slide 11: CommunityToolkit.Mvvm - Source Generators
 
 **Titre FR (32pt, gras)**: CommunityToolkit.Mvvm
 **Titre EN (20pt, italique)**: CommunityToolkit.Mvvm
@@ -296,7 +316,7 @@ public class MainViewModel : ViewModelBase
 
 ---
 
-## Slide 9-11: MVVM dans RDM (3-4 slides)
+## Slide 12-14: MVVM dans RDM (3-4 slides)
 
 **[À REMPLIR AVEC EXEMPLES SPÉCIFIQUES RDM]**
 
@@ -307,7 +327,7 @@ Ces slides devront être personnalisées avec:
 
 ---
 
-## Slide 12: Pattern RDM - AvaloniaList
+## Slide 15: Pattern RDM - AvaloniaList
 
 **Titre FR (32pt, gras)**: Collections dans RDM
 **Titre EN (20pt, italique)**: Collections in RDM
@@ -348,7 +368,7 @@ public AvaloniaList<ItemViewModel> Items { get; } = new();
 
 ---
 
-## Slide 13: Transition vers les démos
+## Slide 16: Transition vers les démos
 
 **Titre FR (32pt, gras)**: Démonstrations pratiques
 **Titre EN (20pt, italique)**: Practical demonstrations
