@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Avalonia.Demos.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="600"
+        x:Class="Avalonia.Demos.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Avalonia Demos - MVVM Workshop"
+        Width="1000" Height="600">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="300,*">
+
+        <!-- Menu latéral / Side menu -->
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Demos}"
+                 SelectedItem="{Binding SelectedDemo}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}"
+                               Padding="10"
+                               FontSize="14"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <!-- Zone de contenu / Content area -->
+        <ContentControl Grid.Column="1"
+                        Content="{Binding SelectedDemo}"
+                        Padding="20"/>
+
+    </Grid>
+
+</Window>

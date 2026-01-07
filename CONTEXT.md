@@ -20,13 +20,15 @@ Ce document sert d'aide-mémoire pour maintenir le contexte des spécificités t
 - **Raison**: Plus simple à apprendre, adoption plus rapide par l'équipe
 
 ### Collections observables
-- **Utilisé**: `AvaloniaList<T>`
-- **PAS utilisé**: `ObservableCollection<T>`
+- **✅ TOUJOURS UTILISÉ**: `AvaloniaList<T>`
+- **❌ JAMAIS UTILISÉ**: `ObservableCollection<T>`
+- **Règle RDM**: AvaloniaList doit TOUJOURS être priorisé pour les collections observables
 - **Raisons principales**:
   1. **Opérations batch**: `AddRange()`, `RemoveRange()`, `InsertRange()`
   2. **Performance**: Une seule notification `CollectionChanged` au lieu de N notifications
   3. **Efficacité UI**: Un seul layout update pour plusieurs items
   4. ObservableCollection peut être 10-100x plus lent pour opérations multiples
+  5. **Standard RDM**: Cohérence à travers toute la codebase
 
 ---
 
