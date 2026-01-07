@@ -24,9 +24,8 @@ Pour suivre cette conférence et exécuter les projets de démonstration, vous a
   - Vérifier l'installation : `dotnet --version`
 
 - ✅ **IDE au choix** :
-  - Visual Studio 2022 (17.12+) - Recommandé
-  - Visual Studio Code avec extensions C# et Avalonia
   - JetBrains Rider
+  - Visual Studio 2022
 
 - ✅ **Git** (pour cloner le repository)
 
@@ -34,7 +33,7 @@ Pour suivre cette conférence et exécuter les projets de démonstration, vous a
 
 - Expérience avec WinForms ou Windows Forms
 - Connaissances de base en C#
-- Familiarité avec Visual Studio
+- Familiarité avec Visual Studio et/ou Rider
 
 ---
 
@@ -99,8 +98,6 @@ dotnet run
 
 2. Découvrir son utilisation dans RDM actuellement
    - CommunityToolkit.Mvvm (Devolutions.MvvmToolkit)
-   - AvaloniaList avec pattern auto-initialisé
-   - Pratiques et conventions RDM
 
 3. Faciliter l'entrée au développement Avalonia
    - Comparaisons WinForms vs Avalonia
@@ -135,7 +132,7 @@ dotnet run
 
 ## 📞 Contact
 
-Pour toute question concernant la conférence ou le matériel, contactez [VOTRE_CONTACT].
+Pour toute question concernant la conférence ou le matériel, contactez xfortin@devolutions.net.
 
 ---
 
