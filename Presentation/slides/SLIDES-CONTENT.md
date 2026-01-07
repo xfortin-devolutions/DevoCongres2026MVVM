@@ -245,7 +245,6 @@ public partial class PersonViewModel : ObservableObject
 
 // Le code ci-dessus génère automatiquement:
 // - La propriété publique Name
-// - L'implémentation de INotifyPropertyChanged
 // - La logique de comparaison et notification
 ```
 
@@ -254,71 +253,41 @@ public partial class PersonViewModel : ObservableObject
 
 ---
 
-## Slide 12: CommunityToolkit.Mvvm - Source Generators
+## Slide 12: Source Generators - Attributs RDM
 
-**Titre FR (32pt, gras)**: CommunityToolkit.Mvvm
-**Titre EN (20pt, italique)**: CommunityToolkit.Mvvm
+**Titre FR (32pt, gras)**: Attributs Source Generators
+**Titre EN (20pt, italique)**: Source Generator Attributes
 
-**Note FR (18pt)**: *(RDM utilise notre propre implémentation: Devolutions.MvvmToolkit)*
-**Note EN (16pt, italique)**: *(RDM uses our own implementation: Devolutions.MvvmToolkit)*
+**Note FR (18pt)**: *(RDM utilise Devolutions.MvvmToolkit)*
+**Note EN (16pt, italique)**: *(RDM uses Devolutions.MvvmToolkit)*
 
-**Contenu FR (24pt)**:
+**Contenu FR (22pt)**:
 
-**Source Generators** pour simplifier le code MVVM:
+**[ObservableProperty]**
+Génère une propriété avec INotifyPropertyChanged
 
-📝 **[ObservableProperty]**
-- Génère propriété avec INotifyPropertyChanged
-- Réduit le boilerplate code
+**[RelayCommand]**
+Génère un ICommand à partir d'une méthode
 
-⚡ **[RelayCommand]**
-- Génère ICommand automatiquement
-- Support async avec AsyncRelayCommand
-- CanExecute intégré
+**[NotifyPropertyChangedFor]**
+Notifie d'autres propriétés lors du changement
 
-**Convention de nommage**:
-- Champ privé: `camelCase` ou `_camelCase`
-- Propriété générée: `PascalCase`
-- Commande générée: `{MethodName}Command`
+**[NotifyCanExecuteChangedFor]**
+Met à jour le CanExecute d'une commande
 
-**Contenu EN (20pt, italique)**:
+**Contenu EN (18pt, italique)**:
 
-**Source Generators** to simplify MVVM code:
+**[ObservableProperty]**
+Generates a property with INotifyPropertyChanged
 
-📝 **[ObservableProperty]**
-- Generates property with INotifyPropertyChanged
-- Reduces boilerplate code
+**[RelayCommand]**
+Generates an ICommand from a method
 
-⚡ **[RelayCommand]**
-- Generates ICommand automatically
-- Async support with AsyncRelayCommand
-- Built-in CanExecute
+**[NotifyPropertyChangedFor]**
+Notifies other properties on change
 
-**Naming convention**:
-- Private field: `camelCase` or `_camelCase`
-- Generated property: `PascalCase`
-- Generated command: `{MethodName}Command`
-
-**Exemple de code** (non bilingue):
-```csharp
-public class MainViewModel : ViewModelBase
-{
-    [ObservableProperty]
-    private string userName;
-
-    [ObservableProperty]
-    private bool isLoading;
-
-    [RelayCommand(CanExecute = nameof(CanSave))]
-    private async Task SaveAsync()
-    {
-        IsLoading = true;
-        await SaveToDatabase();
-        IsLoading = false;
-    }
-
-    private bool CanSave() => !string.IsNullOrEmpty(UserName);
-}
-```
+**[NotifyCanExecuteChangedFor]**
+Updates a command's CanExecute
 
 ---
 
