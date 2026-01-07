@@ -291,59 +291,7 @@ Updates a command's CanExecute
 
 ---
 
-## Slide 13-15: MVVM dans RDM (3-4 slides)
-
-**[À REMPLIR AVEC EXEMPLES SPÉCIFIQUES RDM]**
-
-Ces slides devront être personnalisées avec:
-- Exemples concrets de code RDM
-- Captures d'écran de l'application RDM
-- Patterns spécifiques adoptés par l'équipe
-
----
-
-## Slide 16: Pattern RDM - AvaloniaList
-
-**Titre FR (32pt, gras)**: Collections dans RDM
-**Titre EN (20pt, italique)**: Collections in RDM
-
-**Contenu FR (24pt)**:
-
-**Pourquoi AvaloniaList au lieu de ObservableCollection?**
-
-✅ **Opérations batch**:
-- `AddRange()`, `RemoveRange()`, `InsertRange()`
-- Une seule notification au lieu de N notifications
-- Performance 10-100x meilleure
-
-✅ **Pattern auto-initialisé**:
-```csharp
-public AvaloniaList<ItemViewModel> Items { get; } = new();
-```
-- Propriété readonly (jamais null)
-- Binding direct sur Count sans fallback
-- Simplification du code
-
-**Contenu EN (20pt, italique)**:
-
-**Why AvaloniaList instead of ObservableCollection?**
-
-✅ **Batch operations**:
-- `AddRange()`, `RemoveRange()`, `InsertRange()`
-- Single notification instead of N notifications
-- 10-100x better performance
-
-✅ **Auto-initialized pattern**:
-```csharp
-public AvaloniaList<ItemViewModel> Items { get; } = new();
-```
-- Readonly property (never null)
-- Direct Count binding without fallback
-- Code simplification
-
----
-
-## Slide 17: Transition vers les démos
+## Slide 13: Transition vers les démos
 
 **Titre FR (32pt, gras)**: Démonstrations pratiques
 **Titre EN (20pt, italique)**: Practical demonstrations
