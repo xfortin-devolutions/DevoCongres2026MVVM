@@ -157,50 +157,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 
 ---
 
-## Slide 9: Avantages MVVM
-
-**Titre FR (32pt, gras)**: Pourquoi MVVM?
-**Titre EN (20pt, italique)**: Why MVVM?
-
-**Contenu FR (24pt)**:
-
-✅ **Testabilité**
-- ViewModel testable unitairement sans UI
-- Pas besoin de simuler des clics ou des événements
-
-✅ **Séparation des préoccupations**
-- Logique métier isolée de la présentation
-- Équipes peuvent travailler en parallèle
-
-✅ **Maintenabilité**
-- Code organisé et structuré
-- Modifications facilitées
-
-✅ **Réutilisabilité**
-- ViewModels réutilisables avec différentes Views
-- Logique métier indépendante de la plateforme
-
-**Contenu EN (20pt, italique)**:
-
-✅ **Testability**
-- ViewModel unit-testable without UI
-- No need to simulate clicks or events
-
-✅ **Separation of concerns**
-- Business logic isolated from presentation
-- Teams can work in parallel
-
-✅ **Maintainability**
-- Organized and structured code
-- Easier modifications
-
-✅ **Reusability**
-- ViewModels reusable with different Views
-- Platform-independent business logic
-
----
-
-## Slide 10: Data Binding et INotifyPropertyChanged
+## Slide 9: Data Binding
 
 **Titre FR (32pt, gras)**: Le cœur de MVVM: Data Binding
 **Titre EN (20pt, italique)**: The heart of MVVM: Data Binding
@@ -215,7 +172,7 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 **INotifyPropertyChanged**:
 - Interface qui notifie la View des changements
 - Déclenche la mise à jour automatique de l'UI
-- Implémenté automatiquement par CommunityToolkit.Mvvm (RDM utilise Devolutions.MvvmToolkit)
+- Essentiel pour la réactivité de l'interface
 
 **Contenu EN (20pt, italique)**:
 
@@ -227,31 +184,77 @@ View (XAML) ←──Data Binding──→ ViewModel ←→ Model
 **INotifyPropertyChanged**:
 - Interface that notifies the View of changes
 - Triggers automatic UI updates
-- Automatically implemented by CommunityToolkit.Mvvm (RDM uses Devolutions.MvvmToolkit)
-
-**Exemple de code** (non bilingue):
-```csharp
-// Ancienne méthode (verbose)
-private string _name;
-public string Name
-{
-    get => _name;
-    set
-    {
-        _name = value;
-        OnPropertyChanged(nameof(Name));
-    }
-}
-
-// Avec CommunityToolkit.Mvvm (simple!)
-[ObservableProperty]
-private string name;
-// Génère automatiquement la propriété Name avec INotifyPropertyChanged!
-```
+- Essential for interface reactivity
 
 ---
 
-## Slide 11: CommunityToolkit.Mvvm - Source Generators
+## Slide 10: Exemple - INotifyPropertyChanged manuel
+
+**Titre FR (32pt, gras)**: Implémentation manuelle
+**Titre EN (20pt, italique)**: Manual implementation
+
+**Exemple de code** (non bilingue):
+```csharp
+public class PersonViewModel : INotifyPropertyChanged
+{
+    private string _name;
+
+    public string Name
+    {
+        get => _name;
+        set
+        {
+            if (_name != value)
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this,
+            new PropertyChangedEventArgs(propertyName));
+    }
+}
+```
+
+**Note FR (20pt)**: Beaucoup de code répétitif (boilerplate)
+**Note EN (18pt, italique)**: Lots of repetitive code (boilerplate)
+
+---
+
+## Slide 11: Exemple - Avec [ObservableProperty]
+
+**Titre FR (32pt, gras)**: Simplifié avec CommunityToolkit.Mvvm
+**Titre EN (20pt, italique)**: Simplified with CommunityToolkit.Mvvm
+
+**Note FR (18pt)**: *(RDM utilise Devolutions.MvvmToolkit)*
+**Note EN (16pt, italique)**: *(RDM uses Devolutions.MvvmToolkit)*
+
+**Exemple de code** (non bilingue):
+```csharp
+public partial class PersonViewModel : ObservableObject
+{
+    [ObservableProperty]
+    private string name;
+}
+
+// Le code ci-dessus génère automatiquement:
+// - La propriété publique Name
+// - L'implémentation de INotifyPropertyChanged
+// - La logique de comparaison et notification
+```
+
+**Note FR (20pt)**: Simple, concis et sans erreur!
+**Note EN (18pt, italique)**: Simple, concise and error-free!
+
+---
+
+## Slide 12: CommunityToolkit.Mvvm - Source Generators
 
 **Titre FR (32pt, gras)**: CommunityToolkit.Mvvm
 **Titre EN (20pt, italique)**: CommunityToolkit.Mvvm
@@ -319,7 +322,7 @@ public class MainViewModel : ViewModelBase
 
 ---
 
-## Slide 12-14: MVVM dans RDM (3-4 slides)
+## Slide 13-15: MVVM dans RDM (3-4 slides)
 
 **[À REMPLIR AVEC EXEMPLES SPÉCIFIQUES RDM]**
 
@@ -330,7 +333,7 @@ Ces slides devront être personnalisées avec:
 
 ---
 
-## Slide 15: Pattern RDM - AvaloniaList
+## Slide 16: Pattern RDM - AvaloniaList
 
 **Titre FR (32pt, gras)**: Collections dans RDM
 **Titre EN (20pt, italique)**: Collections in RDM
@@ -371,7 +374,7 @@ public AvaloniaList<ItemViewModel> Items { get; } = new();
 
 ---
 
-## Slide 16: Transition vers les démos
+## Slide 17: Transition vers les démos
 
 **Titre FR (32pt, gras)**: Démonstrations pratiques
 **Titre EN (20pt, italique)**: Practical demonstrations
