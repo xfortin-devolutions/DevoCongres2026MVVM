@@ -1,9 +1,5 @@
 namespace WinForms.Demos.Demo1.ProductTypes;
 
-/// <summary>
-/// Class for a Book product.
-/// Demonstrates specific properties unique to books.
-/// </summary>
 public class Book : Product
 {
     public string Author { get; set; } = string.Empty;
