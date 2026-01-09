@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Avalonia.Demos.Demo2_MultipleViews"
+             xmlns:controls="using:Avalonia.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Avalonia.Demos.Demo2_MultipleViews.ViewModes.GridView"
+             x:DataType="vm:MultipleViewsViewModel">
+
+    <Design.DataContext>
+        <vm:MultipleViewsViewModel />
+    </Design.DataContext>
+
+    <DataGrid ItemsSource="{Binding Products}"
+              IsReadOnly="True"
+              GridLinesVisibility="All"
+              AutoGenerateColumns="False">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" />
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+            <DataGridTextColumn Header="Type" Binding="{Binding ProductType}" Width="100" />
+            <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat='${0:F2}'}" Width="100" />
+            <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*" />
+        </DataGrid.Columns>
+    </DataGrid>
+
+</UserControl>

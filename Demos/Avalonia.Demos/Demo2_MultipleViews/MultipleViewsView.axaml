@@ -1,17 +1,55 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:Avalonia.Demos.Demo2_MultipleViews"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:vm="using:Avalonia.Demos.Demo2_MultipleViews"
+             xmlns:views="using:Avalonia.Demos.Demo2_MultipleViews.ViewModes"
+             xmlns:viewModes="using:Avalonia.Demos.Demo2_MultipleViews.ViewModes"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
              x:Class="Avalonia.Demos.Demo2_MultipleViews.MultipleViewsView"
-             x:DataType="local:MultipleViewsViewModel">
+             x:DataType="vm:MultipleViewsViewModel">
 
-    <TextBlock Text="Demo 2: Multiple Views"
-               FontSize="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <Design.DataContext>
+        <vm:MultipleViewsViewModel />
+    </Design.DataContext>
 
-    <!-- TODO: Implémenter la vue Multiple Views -->
+    <DockPanel>
+        <!-- Toolbar with view mode buttons -->
+        <Border DockPanel.Dock="Top"
+                Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"
+                BorderThickness="0,0,0,1"
+                Padding="10">
+            <StackPanel Orientation="Horizontal" Spacing="10">
+                <TextBlock Text="View Mode:"
+                           VerticalAlignment="Center"
+                           FontWeight="SemiBold"
+                           Margin="0,0,10,0" />
+
+                <ComboBox SelectedItem="{Binding CurrentViewMode}"
+                          Width="150">
+                    <viewModes:ViewMode>Grid</viewModes:ViewMode>
+                    <viewModes:ViewMode>Tile</viewModes:ViewMode>
+                    <viewModes:ViewMode>Card</viewModes:ViewMode>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+        
+        <Panel>
+            <views:GridView 
+                IsVisible="{Binding CurrentViewMode,
+                    Converter={x:Static ObjectConverters.Equal},
+                    ConverterParameter={x:Static viewModes:ViewMode.Grid}}" />
+            <views:TileView
+                IsVisible="{Binding CurrentViewMode,
+                    Converter={x:Static ObjectConverters.Equal},
+                    ConverterParameter={x:Static viewModes:ViewMode.Tile}}" />
+            <views:CardView
+                IsVisible="{Binding CurrentViewMode,
+                    Converter={x:Static ObjectConverters.Equal},
+                    ConverterParameter={x:Static viewModes:ViewMode.Card}}" />
+        </Panel>
+    </DockPanel>
+
 
 </UserControl>
