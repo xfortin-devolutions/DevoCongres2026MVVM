@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Avalonia.Demos.Demo1_MasterDetail.ProductTypes"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="Avalonia.Demos.Demo1_MasterDetail.ProductTypes.ClothingView"
+             x:DataType="vm:ClothingViewModel">
+
+    <Design.DataContext>
+        <vm:ClothingViewModel Name="Cotton T-Shirt"
+                              Price="29.99"
+                              Description="Comfortable everyday t-shirt"
+                              Size="Medium"
+                              Color="Navy Blue"
+                              Material="100% Cotton"
+                              CareInstructions="Machine wash cold, tumble dry low" />
+    </Design.DataContext>
+
+    <StackPanel Spacing="10" Margin="20">
+    <TextBlock Text="Clothing Details" FontSize="20" FontWeight="Bold" />
+
+    <!-- Common Product Properties -->
+    <StackPanel Spacing="5">
+      <TextBlock Text="Name:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Name}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Price:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Price, StringFormat='${0:F2}'}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Description:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+    </StackPanel>
+
+    <!-- Clothing-Specific Properties -->
+    <Separator Height="1" Margin="0,10" />
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Size:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Size}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Color:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Color}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Material:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Material}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Care Instructions:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding CareInstructions}" TextWrapping="Wrap" />
+    </StackPanel>
+  </StackPanel>
+
+</UserControl>

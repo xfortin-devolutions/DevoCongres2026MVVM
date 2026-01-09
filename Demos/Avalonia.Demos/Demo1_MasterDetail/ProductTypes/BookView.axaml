@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:Avalonia.Demos.Demo1_MasterDetail.ProductTypes"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="Avalonia.Demos.Demo1_MasterDetail.ProductTypes.BookView"
+             x:DataType="vm:BookViewModel">
+
+    <Design.DataContext>
+        <vm:BookViewModel Name="The Hobbit"
+                          Price="12.99"
+                          Description="A fantasy novel about Bilbo Baggins' adventure"
+                          Author="J.R.R. Tolkien"
+                          Isbn="978-0547928227"
+                          PageCount="300"
+                          Genre="Fantasy" />
+    </Design.DataContext>
+
+    <StackPanel Spacing="10" Margin="20">
+    <TextBlock Text="Book Details" FontSize="20" FontWeight="Bold" />
+
+    <!-- Common Product Properties -->
+    <StackPanel Spacing="5">
+      <TextBlock Text="Name:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Name}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Price:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Price, StringFormat='${0:F2}'}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Description:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Description}" TextWrapping="Wrap" />
+    </StackPanel>
+
+    <!-- Book-Specific Properties -->
+    <Separator Height="1" Margin="0,10" />
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Author:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Author}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="ISBN:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Isbn}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Page Count:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding PageCount}" />
+    </StackPanel>
+
+    <StackPanel Spacing="5">
+      <TextBlock Text="Genre:" FontWeight="SemiBold" />
+      <TextBlock Text="{Binding Genre}" />
+    </StackPanel>
+  </StackPanel>
+
+</UserControl>

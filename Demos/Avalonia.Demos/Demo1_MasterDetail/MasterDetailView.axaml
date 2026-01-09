@@ -7,11 +7,30 @@
              x:Class="Avalonia.Demos.Demo1_MasterDetail.MasterDetailView"
              x:DataType="local:MasterDetailViewModel">
 
-    <TextBlock Text="Demo 1: Master-Detail Pattern"
-               FontSize="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <Design.DataContext>
+        <local:MasterDetailViewModel />
+    </Design.DataContext>
+    
+    <DockPanel>
+        <TextBlock Text="Demo 1: Master-Detail Pattern"
+                   FontSize="24"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   DockPanel.Dock="Top" />
 
-    <!-- TODO: Implémenter la vue Master-Detail -->
+        <ListBox ItemsSource="{Binding Products}"
+                 SelectedItem="{Binding SelectedProduct}"
+                 DockPanel.Dock="Left">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"
+                               Padding="5"
+                               FontSize="14" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <ContentControl Content="{Binding SelectedProduct}" />
+    </DockPanel>
 
 </UserControl>
