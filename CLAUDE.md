@@ -135,6 +135,20 @@ public AvaloniaList<ItemViewModel> Items { get; } = new();
 [RelayCommand]        // Génère ICommand
 ```
 
+### Convention de nommage des champs
+- ❌ **NE PAS utiliser** le préfixe underscore `_` pour les champs privés
+- ✅ **Utiliser** des noms en camelCase sans préfixe
+
+```csharp
+// ❌ INCORRECT
+[ObservableProperty]
+private string _name = string.Empty;
+
+// ✅ CORRECT
+[ObservableProperty]
+private string name = string.Empty;
+```
+
 ---
 
 ## 🎯 Démonstration la plus importante
