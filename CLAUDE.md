@@ -149,6 +149,25 @@ private string _name = string.Empty;
 private string name = string.Empty;
 ```
 
+### Design-time DataContext pour le Previewer
+- ✅ **TOUJOURS déclarer** un `Design.DataContext` dans les vues AXAML
+- Permet de visualiser les données dans le Previewer Avalonia
+- Facilite le design et le développement de l'interface
+
+```xml
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:vm="using:MyApp.ViewModels"
+             x:DataType="vm:MyViewModel">
+
+    <Design.DataContext>
+        <vm:MyViewModel Name="Sample Name"
+                        Description="Sample description" />
+    </Design.DataContext>
+
+    <!-- Votre UI ici -->
+</UserControl>
+```
+
 ---
 
 ## 🎯 Démonstration la plus importante
