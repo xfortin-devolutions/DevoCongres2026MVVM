@@ -3,28 +3,20 @@ using WinForms.Demos.Demo1.DetailPanels;
 
 namespace WinForms.Demos.Demo1;
 
-/// <summary>
-/// WinForms Master-Detail demo that demonstrates the traditional event-driven approach.
-/// This is the "old way" that requires manual control manipulation and switch statements.
-/// Compare this to the Avalonia MVVM approach which uses data binding and automatic view switching.
-/// </summary>
 public class MasterDetailControl : UserControl
 {
     private readonly ListBox productListBox;
     private readonly Panel detailPanel;
     private readonly Label titleLabel;
 
-    // The different detail panels - we need to create and manage them all manually
     private BookDetailPanel? bookDetailPanel;
     private ElectronicsDetailPanel? electronicsDetailPanel;
     private ClothingDetailPanel? clothingDetailPanel;
 
-    // The product list - manually maintained
     private readonly List<Product> products;
 
     public MasterDetailControl()
     {
-        // Initialize the product list with sample data
         products = new List<Product>
         {
             new Book
@@ -95,7 +87,6 @@ public class MasterDetailControl : UserControl
             }
         };
 
-        // Create UI controls
         titleLabel = new Label
         {
             Text = "Demo 1: Master-Detail Pattern",
@@ -109,7 +100,7 @@ public class MasterDetailControl : UserControl
         {
             Location = new Point(20, 60),
             Size = new Size(200, 370),
-            DisplayMember = "Name"  // Show the Name property in the list
+            DisplayMember = "Name"
         };
 
         detailPanel = new Panel
@@ -142,22 +133,14 @@ public class MasterDetailControl : UserControl
         Controls.Add(productListBox);
         Controls.Add(detailPanel);
 
-        // Populate the ListBox with products
         foreach (var product in products)
         {
             productListBox.Items.Add(product);
         }
 
-        // Wire up the event handler - THE OLD WAY with events!
         productListBox.SelectedIndexChanged += ProductListBox_SelectedIndexChanged;
     }
 
-    /// <summary>
-    /// Event handler for when the selected item in the ListBox changes.
-    /// This is the "old way" - we need to manually check what type of product is selected,
-    /// hide all panels, create the right panel if needed, and show it.
-    /// Compare this to MVVM where the ContentControl automatically switches views based on DataType!
-    /// </summary>
     private void ProductListBox_SelectedIndexChanged(object? sender, EventArgs e)
     {
         if (productListBox.SelectedItem == null)
@@ -168,11 +151,8 @@ public class MasterDetailControl : UserControl
 
         var selectedProduct = (Product)productListBox.SelectedItem;
 
-        // Clear the detail panel
         detailPanel.Controls.Clear();
 
-        // THE TRADITIONAL WAY: Use switch/if to determine what to show
-        // This is what we want to avoid with MVVM!
         switch (selectedProduct)
         {
             case Book book:
@@ -189,13 +169,8 @@ public class MasterDetailControl : UserControl
         }
     }
 
-    /// <summary>
-    /// Manually create and populate the Book detail panel.
-    /// In MVVM with Avalonia, the DataTemplate does this automatically!
-    /// </summary>
     private void ShowBookDetails(Book book)
     {
-        // Create the panel if it doesn't exist
         if (bookDetailPanel == null)
         {
             bookDetailPanel = new BookDetailPanel
@@ -204,20 +179,13 @@ public class MasterDetailControl : UserControl
             };
         }
 
-        // Manually populate the panel with data
         bookDetailPanel.LoadBook(book);
 
-        // Add it to the detail panel
         detailPanel.Controls.Add(bookDetailPanel);
     }
 
-    /// <summary>
-    /// Manually create and populate the Electronics detail panel.
-    /// In MVVM with Avalonia, the DataTemplate does this automatically!
-    /// </summary>
     private void ShowElectronicsDetails(Electronics electronics)
     {
-        // Create the panel if it doesn't exist
         if (electronicsDetailPanel == null)
         {
             electronicsDetailPanel = new ElectronicsDetailPanel
@@ -226,20 +194,13 @@ public class MasterDetailControl : UserControl
             };
         }
 
-        // Manually populate the panel with data
         electronicsDetailPanel.LoadElectronics(electronics);
 
-        // Add it to the detail panel
         detailPanel.Controls.Add(electronicsDetailPanel);
     }
 
-    /// <summary>
-    /// Manually create and populate the Clothing detail panel.
-    /// In MVVM with Avalonia, the DataTemplate does this automatically!
-    /// </summary>
     private void ShowClothingDetails(Clothing clothing)
     {
-        // Create the panel if it doesn't exist
         if (clothingDetailPanel == null)
         {
             clothingDetailPanel = new ClothingDetailPanel
@@ -248,10 +209,8 @@ public class MasterDetailControl : UserControl
             };
         }
 
-        // Manually populate the panel with data
         clothingDetailPanel.LoadClothing(clothing);
 
-        // Add it to the detail panel
         detailPanel.Controls.Add(clothingDetailPanel);
     }
 }

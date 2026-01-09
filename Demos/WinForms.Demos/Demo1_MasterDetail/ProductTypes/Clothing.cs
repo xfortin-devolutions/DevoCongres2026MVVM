@@ -1,9 +1,5 @@
 namespace WinForms.Demos.Demo1.ProductTypes;
 
-/// <summary>
-/// Class for a Clothing product.
-/// Demonstrates specific properties unique to clothing items.
-/// </summary>
 public class Clothing : Product
 {
     public string Size { get; set; } = string.Empty;
