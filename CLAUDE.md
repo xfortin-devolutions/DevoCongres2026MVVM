@@ -164,8 +164,29 @@ private string name = string.Empty;
                         Description="Sample description" />
     </Design.DataContext>
 
-    <!-- Votre UI ici -->
 </UserControl>
+```
+
+### Commentaires dans le code
+- ❌ **NE PAS ajouter** de commentaires dans le code (ni .cs ni .axaml)
+- Le code doit être auto-documenté et clair par lui-même
+- Exceptions: XML documentation (///) pour les APIs publiques si nécessaire
+
+```csharp
+// ❌ INCORRECT - commentaires inutiles
+public partial class BookViewModel : ProductViewModel
+{
+    // Propriété pour l'auteur
+    [ObservableProperty]
+    private string author = string.Empty;
+}
+
+// ✅ CORRECT - code sans commentaires
+public partial class BookViewModel : ProductViewModel
+{
+    [ObservableProperty]
+    private string author = string.Empty;
+}
 ```
 
 ---

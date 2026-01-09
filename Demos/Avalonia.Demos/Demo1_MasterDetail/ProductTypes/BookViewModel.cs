@@ -2,10 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Avalonia.Demos.Demo1_MasterDetail.ProductTypes;
 
-/// <summary>
-/// ViewModel for a Book product.
-/// Demonstrates specific properties unique to books.
-/// </summary>
 public partial class BookViewModel : ProductViewModel
 {
     [ObservableProperty]

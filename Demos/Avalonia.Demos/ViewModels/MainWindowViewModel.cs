@@ -11,10 +11,10 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]
     private DemoItemViewModel? selectedDemo;
 
-    public AvaloniaList<DemoItemViewModel> Demos { get; } = new()
-    {
+    public AvaloniaList<DemoItemViewModel> Demos { get; } =
+    [
         new MasterDetailViewModel(),
         new MultipleViewsViewModel(),
         new DynamicFormViewModel()
-    };
+    ];
 }

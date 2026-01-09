@@ -3,7 +3,6 @@ using Avalonia.Demos.Demo1_MasterDetail.ProductTypes;
 using Avalonia.Demos.Demo2_MultipleViews.ViewModes;
 using Avalonia.Demos.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 
 namespace Avalonia.Demos.Demo2_MultipleViews;
 

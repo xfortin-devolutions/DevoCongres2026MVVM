@@ -2,10 +2,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Avalonia.Demos.Demo1_MasterDetail.ProductTypes;
 
-/// <summary>
-/// ViewModel for an Electronics product.
-/// Demonstrates specific properties unique to electronics.
-/// </summary>
 public partial class ElectronicsViewModel : ProductViewModel
 {
     [ObservableProperty]

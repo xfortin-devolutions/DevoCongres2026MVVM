@@ -15,8 +15,7 @@
     </Design.DataContext>
 
     <Grid ColumnDefinitions="300,*">
-
-        <!-- Menu latéral / Side menu -->
+        
         <ListBox Grid.Column="0"
                  ItemsSource="{Binding Demos}"
                  SelectedItem="{Binding SelectedDemo}">
@@ -29,7 +28,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <!-- Zone de contenu / Content area -->
         <ContentControl Grid.Column="1"
                         Content="{Binding SelectedDemo}"
                         Padding="20"/>
