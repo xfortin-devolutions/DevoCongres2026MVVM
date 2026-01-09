@@ -1,7 +1,7 @@
 ﻿using Avalonia.Collections;
-using Avalonia.Demos.Demo1;
-using Avalonia.Demos.Demo2;
-using Avalonia.Demos.Demo3;
+using Avalonia.Demos.Demo1_MasterDetail;
+using Avalonia.Demos.Demo2_MultipleViews;
+using Avalonia.Demos.Demo3_DynamicForm;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Avalonia.Demos.ViewModels;

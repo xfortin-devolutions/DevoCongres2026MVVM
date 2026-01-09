@@ -1,6 +1,6 @@
 using Avalonia.Demos.ViewModels;
 
-namespace Avalonia.Demos.Demo3;
+namespace Avalonia.Demos.Demo3_DynamicForm;
 
 public class DynamicFormViewModel : DemoItemViewModel
 {

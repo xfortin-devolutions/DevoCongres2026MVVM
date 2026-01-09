@@ -1,10 +1,10 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="using:Avalonia.Demos.Demo2"
+             xmlns:local="using:Avalonia.Demos.Demo2_MultipleViews"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="Avalonia.Demos.Demo2.MultipleViewsView"
+             x:Class="Avalonia.Demos.Demo2_MultipleViews.MultipleViewsView"
              x:DataType="local:MultipleViewsViewModel">
 
     <TextBlock Text="Demo 2: Multiple Views"

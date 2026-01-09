@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Avalonia.Demos.Demo1;
+namespace Avalonia.Demos.Demo1_MasterDetail;
 
 public partial class MasterDetailView : UserControl
 {

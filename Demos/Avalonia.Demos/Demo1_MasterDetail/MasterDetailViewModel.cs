@@ -1,6 +1,6 @@
 using Avalonia.Demos.ViewModels;
 
-namespace Avalonia.Demos.Demo1;
+namespace Avalonia.Demos.Demo1_MasterDetail;
 
 public class MasterDetailViewModel : DemoItemViewModel
 {
