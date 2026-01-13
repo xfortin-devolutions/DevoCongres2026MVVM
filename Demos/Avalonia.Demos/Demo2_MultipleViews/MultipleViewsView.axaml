@@ -14,6 +14,13 @@
     </Design.DataContext>
 
     <DockPanel>
+        <TextBlock Text="Demo 2: Multiple Views"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="20"
+                   HorizontalAlignment="Center"
+                   DockPanel.Dock="Top" />
+
         <Border DockPanel.Dock="Top"
                 Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
                 BorderBrush="{DynamicResource SystemControlForegroundBaseMediumLowBrush}"

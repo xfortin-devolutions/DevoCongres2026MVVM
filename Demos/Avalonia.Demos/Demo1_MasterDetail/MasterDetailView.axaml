@@ -14,8 +14,9 @@
     <DockPanel>
         <TextBlock Text="Demo 1: Master-Detail Pattern"
                    FontSize="24"
+                   FontWeight="Bold"
+                   Margin="20"
                    HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
                    DockPanel.Dock="Top" />
 
         <ListBox ItemsSource="{Binding Products}"

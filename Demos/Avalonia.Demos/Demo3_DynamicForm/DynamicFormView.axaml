@@ -13,7 +13,7 @@
 
     <Grid RowDefinitions="Auto,*">
         <TextBlock Grid.Row="0"
-                   Text="Dynamic Form Composition"
+                   Text="Demo 3: Dynamic Form Composition"
                    FontSize="24"
                    FontWeight="Bold"
                    Margin="20"
