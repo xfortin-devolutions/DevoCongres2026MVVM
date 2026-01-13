@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Avalonia.Demos.Demo3_DynamicForm.Items"
+             x:Class="Avalonia.Demos.Demo3_DynamicForm.Items.NumberItemView"
+             x:DataType="vm:NumberItemViewModel">
+
+    <Design.DataContext>
+        <vm:NumberItemViewModel Label="Age"
+                               Value="25"
+                               Minimum="0"
+                               Maximum="120"
+                               Increment="1" />
+    </Design.DataContext>
+
+    <Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="FormItemLabel" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Text="{Binding Label}"
+                   VerticalAlignment="Center" />
+        <NumericUpDown Grid.Column="1"
+                       Value="{Binding Value}"
+                       Minimum="{Binding Minimum}"
+                       Maximum="{Binding Maximum}"
+                       Increment="{Binding Increment}"
+                       FormatString="N2"
+                       VerticalAlignment="Center" />
+    </Grid>
+
+</UserControl>

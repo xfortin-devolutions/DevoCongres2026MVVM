@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Avalonia.Demos.Demo3_DynamicForm.Items"
+             x:Class="Avalonia.Demos.Demo3_DynamicForm.Items.TextItemView"
+             x:DataType="vm:TextItemViewModel">
+
+    <Design.DataContext>
+        <vm:TextItemViewModel Label="Full name" Value="John Doe" />
+    </Design.DataContext>
+
+    <Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="FormItemLabel" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   Text="{Binding Label}"
+                   VerticalAlignment="Center" />
+        <TextBox Grid.Column="1"
+                 Text="{Binding Value}"
+                 VerticalAlignment="Center" />
+    </Grid>
+
+</UserControl>

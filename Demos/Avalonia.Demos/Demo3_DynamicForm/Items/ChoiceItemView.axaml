@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Avalonia.Demos.Demo3_DynamicForm.Items"
+             x:Class="Avalonia.Demos.Demo3_DynamicForm.Items.ChoiceItemView"
+             x:DataType="vm:ChoiceItemViewModel">
+
+    <Design.DataContext>
+        <vm:ChoiceItemViewModel Label="Favorite color" SelectedValue="Blue">
+            <vm:ChoiceItemViewModel.Options>
+                <x:String>Red</x:String>
+                <x:String>Green</x:String>
+                <x:String>Blue</x:String>
+            </vm:ChoiceItemViewModel.Options>
+        </vm:ChoiceItemViewModel>
+    </Design.DataContext>
+
+    <Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" SharedSizeGroup="FormItemLabel" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0"
+                   Content="{Binding Label}"
+                   VerticalAlignment="Center" />
+        <ComboBox Grid.Column="1"
+                  ItemsSource="{Binding Options}"
+                  SelectedItem="{Binding SelectedValue}"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center" />
+    </Grid>
+
+</UserControl>

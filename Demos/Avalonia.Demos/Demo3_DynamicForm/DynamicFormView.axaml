@@ -7,11 +7,29 @@
              x:Class="Avalonia.Demos.Demo3_DynamicForm.DynamicFormView"
              x:DataType="local:DynamicFormViewModel">
 
-    <TextBlock Text="Demo 3: Dynamic Form Composition"
-               FontSize="24"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"/>
+    <Design.DataContext>
+        <local:DynamicFormViewModel />
+    </Design.DataContext>
 
-    <!-- TODO: Implémenter la vue Dynamic Form -->
+    <Grid RowDefinitions="Auto,*">
+        <TextBlock Grid.Row="0"
+                   Text="Dynamic Form Composition"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="20"
+                   HorizontalAlignment="Center"/>
+
+        <ScrollViewer Grid.Row="1"
+                      Margin="20,0">
+            <ItemsControl ItemsSource="{Binding FormItems}"
+                          Grid.IsSharedSizeScope="True">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Spacing="10" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
 
 </UserControl>
