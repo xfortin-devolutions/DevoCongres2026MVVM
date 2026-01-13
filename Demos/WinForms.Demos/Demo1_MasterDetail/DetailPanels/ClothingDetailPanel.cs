@@ -32,13 +32,13 @@ public class ClothingDetailPanel : DetailPanel
         yPos += 10;
 
         CreateLabel("Description:", ref yPos, fontStyle: FontStyle.Bold);
-        lblDescriptionValue = CreateLabel("", ref yPos, maxWidth: 350);
+        lblDescriptionValue = CreateLabel("", ref yPos);
         yPos += 20;
 
         var separator = new Panel
         {
             Height = 1,
-            Width = 400,
+            Width = 900,
             BackColor = Color.LightGray,
             Location = new Point(0, yPos)
         };
@@ -58,7 +58,7 @@ public class ClothingDetailPanel : DetailPanel
         yPos += 10;
 
         CreateLabel("Care Instructions:", ref yPos, fontStyle: FontStyle.Bold);
-        lblCareInstructionsValue = CreateLabel("", ref yPos, maxWidth: 350);
+        lblCareInstructionsValue = CreateLabel("", ref yPos);
     }
 
     public void LoadClothing(Clothing clothing)

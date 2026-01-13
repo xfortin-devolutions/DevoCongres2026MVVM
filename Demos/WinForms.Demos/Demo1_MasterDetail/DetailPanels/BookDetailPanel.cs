@@ -17,7 +17,7 @@ public class BookDetailPanel : DetailPanel
     public BookDetailPanel()
     {
         Padding = new Padding(20);
-
+        
         int yPos = 0;
 
         CreateLabel("Book Details", ref yPos, fontStyle: FontStyle.Bold, isTitle: true);
@@ -32,13 +32,13 @@ public class BookDetailPanel : DetailPanel
         yPos += 10;
 
         CreateLabel("Description:", ref yPos, fontStyle: FontStyle.Bold);
-        lblDescriptionValue = CreateLabel("", ref yPos, maxWidth: 350);
+        lblDescriptionValue = CreateLabel("", ref yPos);
         yPos += 20;
 
-        var separator = new Panel
+        Panel separator = new()
         {
             Height = 1,
-            Width = 400,
+            Width = 900,
             BackColor = Color.LightGray,
             Location = new Point(0, yPos)
         };

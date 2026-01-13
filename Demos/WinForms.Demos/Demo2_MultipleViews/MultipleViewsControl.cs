@@ -178,7 +178,12 @@ public class MultipleViewsControl : UserControl
 
     private void SwitchViewMode(ViewMode viewMode)
     {
-        if (currentViewMode == viewMode || contentPanel == null)
+        if (contentPanel == null)
+        {
+            return;
+        }
+
+        if (currentViewMode == viewMode && contentPanel.Controls.Count > 0)
         {
             return;
         }

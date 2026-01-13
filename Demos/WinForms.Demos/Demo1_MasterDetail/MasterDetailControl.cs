@@ -105,7 +105,7 @@ public class MasterDetailControl : UserControl
         productListBox = new ListBox
         {
             Dock = DockStyle.Left,
-            Width = 150,
+            Width = 240,
             DisplayMember = "Name"
         };
 
