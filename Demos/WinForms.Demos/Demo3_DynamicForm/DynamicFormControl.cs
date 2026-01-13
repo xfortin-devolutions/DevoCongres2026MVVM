@@ -1,4 +1,5 @@
 using WinForms.Demos.Demo3_DynamicForm.FormItems;
+using WinForms.Demos.Demo3_DynamicForm.FormItemPanels;
 
 namespace WinForms.Demos.Demo3_DynamicForm;
 
@@ -55,7 +56,7 @@ public class DynamicFormControl : UserControl
         RenderFormItems();
     }
 
-    private List<FormItem> CreateFormItems()
+    private static List<FormItem> CreateFormItems()
     {
         return
         [
@@ -129,131 +130,14 @@ public class DynamicFormControl : UserControl
         {
             Panel itemPanel = item switch
             {
-                TextItem textItem => CreateTextItemPanel(textItem),
-                NumberItem numberItem => CreateNumberItemPanel(numberItem),
-                BooleanItem booleanItem => CreateBooleanItemPanel(booleanItem),
-                ChoiceItem choiceItem => CreateChoiceItemPanel(choiceItem),
+                TextItem textItem => new TextItemPanel(textItem),
+                NumberItem numberItem => new NumberItemPanel(numberItem),
+                BooleanItem booleanItem => new BooleanItemPanel(booleanItem),
+                ChoiceItem choiceItem => new ChoiceItemPanel(choiceItem),
                 _ => throw new NotSupportedException($"Form item type {item.GetType().Name} is not supported")
             };
 
             formPanel.Controls.Add(itemPanel);
         }
-    }
-
-    private static Panel CreateTextItemPanel(TextItem item)
-    {
-        Panel panel = new()
-        {
-            Width = 900,
-            Height = 25,
-            Margin = new Padding(0, 0, 0, 5)
-        };
-
-        Label label = new()
-        {
-            Text = item.Label,
-            Location = new Point(0, 2),
-            Width = 120
-        };
-        panel.Controls.Add(label);
-
-        TextBox textBox = new()
-        {
-            Text = item.Value,
-            Location = new Point(120, 0),
-            Width = 400,
-            Font = new Font("Segoe UI", 10F)
-        };
-        textBox.TextChanged += (_, _) => item.Value = textBox.Text;
-        panel.Controls.Add(textBox);
-
-        return panel;
-    }
-
-    private static Panel CreateNumberItemPanel(NumberItem item)
-    {
-        Panel panel = new()
-        {
-            Width = 900,
-            Height = 25,
-            Margin = new Padding(0, 0, 0, 5)
-        };
-        
-        Label label = new()
-        {
-            Text = item.Label,
-            Location = new Point(0, 2),
-            Width = 120
-        };
-        panel.Controls.Add(label);
-
-        NumericUpDown numericUpDown = new()
-        {
-            Minimum = item.Minimum,
-            Maximum = item.Maximum,
-            Value = item.Value,
-            Increment = item.Increment,
-            Location = new Point(120, 0),
-            Width = 150,
-            Font = new Font("Segoe UI", 10F)
-        };
-        numericUpDown.ValueChanged += (_, _) => item.Value = numericUpDown.Value;
-        panel.Controls.Add(numericUpDown);
-
-        return panel;
-    }
-
-    private static Panel CreateBooleanItemPanel(BooleanItem item)
-    {
-        Panel panel = new()
-        {
-            Width = 900,
-            Height = 25,
-            Margin = new Padding(0, 0, 0, 5)
-        };
-
-        CheckBox checkBox = new()
-        {
-            Text = item.Label,
-            Checked = item.Value,
-            Location = new Point(120, 0),
-            AutoSize = true
-        };
-        checkBox.CheckedChanged += (_, _) => item.Value = checkBox.Checked;
-        panel.Controls.Add(checkBox);
-
-        return panel;
-    }
-
-    private static Panel CreateChoiceItemPanel(ChoiceItem item)
-    {
-        Panel panel = new()
-        {
-            Width = 900,
-            Height = 25,
-            Margin = new Padding(0, 0, 0, 5)
-        };
-
-        Label label = new()
-        {
-            Text = item.Label,
-            Location = new Point(0, 2),
-            Width = 120
-        };
-        panel.Controls.Add(label);
-
-        ComboBox comboBox = new()
-        {
-            Location = new Point(120, 0),
-            Width = 250,
-            Font = new Font("Segoe UI", 10F),
-            DropDownStyle = ComboBoxStyle.DropDownList
-        };
-        comboBox.Items.AddRange(item.Options);
-        comboBox.SelectedItem = item.SelectedValue;
-        comboBox.SelectedIndexChanged += (_, _) => item.SelectedValue = comboBox.SelectedItem?.ToString() ?? string.Empty;
-        panel.Controls.Add(comboBox);
-
-        return panel;
     }
 }

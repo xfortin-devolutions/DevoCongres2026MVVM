@@ -1,6 +1,6 @@
 using WinForms.Demos.Demo1_MasterDetail;
 using WinForms.Demos.Demo2_MultipleViews;
-using WinForms.Demos.Demo3;
+using WinForms.Demos.Demo3_DynamicForm;
 
 namespace WinForms.Demos;
 
