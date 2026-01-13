@@ -1,4 +1,4 @@
-namespace WinForms.Demos.Demo2;
+namespace WinForms.Demos.Demo2_MultipleViews;
 
 public enum ViewMode
 {

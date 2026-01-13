@@ -1,4 +1,4 @@
-namespace WinForms.Demos.Demo2.ViewPanels;
+namespace WinForms.Demos.Demo2_MultipleViews.ViewPanels;
 
 public class GridViewPanel : Panel
 {
@@ -6,7 +6,6 @@ public class GridViewPanel : Panel
 
     public GridViewPanel()
     {
-        AutoScroll = true;
         Padding = new Padding(10);
 
         dataGridView = new DataGridView

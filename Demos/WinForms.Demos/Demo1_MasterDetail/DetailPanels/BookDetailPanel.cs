@@ -1,18 +1,9 @@
-using WinForms.Demos.Demo1.ProductTypes;
+using WinForms.Demos.Demo1_MasterDetail.ProductTypes;
 
-namespace WinForms.Demos.Demo1.DetailPanels;
+namespace WinForms.Demos.Demo1_MasterDetail.DetailPanels;
 
-public class BookDetailPanel : Panel
+public class BookDetailPanel : DetailPanel
 {
-    private readonly Label lblTitle;
-    private readonly Label lblName;
-    private readonly Label lblPrice;
-    private readonly Label lblDescription;
-    private readonly Label lblAuthor;
-    private readonly Label lblIsbn;
-    private readonly Label lblPageCount;
-    private readonly Label lblGenre;
-
     private readonly Label lblNameValue;
     private readonly Label lblPriceValue;
     private readonly Label lblDescriptionValue;
@@ -21,26 +12,27 @@ public class BookDetailPanel : Panel
     private readonly Label lblPageCountValue;
     private readonly Label lblGenreValue;
 
+    public override bool AutoScroll => true;
+
     public BookDetailPanel()
     {
-        AutoScroll = true;
         Padding = new Padding(20);
 
         int yPos = 0;
 
-        lblTitle = CreateLabel("Book Details", new Font("Segoe UI", 16F, FontStyle.Bold), ref yPos);
+        CreateLabel("Book Details", ref yPos, fontStyle: FontStyle.Bold, isTitle: true);
         yPos += 20;
 
-        lblName = CreateLabel("Name:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblNameValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Name:", ref yPos, fontStyle: FontStyle.Bold);
+        lblNameValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblPrice = CreateLabel("Price:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblPriceValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Price:", ref yPos, fontStyle: FontStyle.Bold);
+        lblPriceValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblDescription = CreateLabel("Description:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblDescriptionValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos, maxWidth: 350);
+        CreateLabel("Description:", ref yPos, fontStyle: FontStyle.Bold);
+        lblDescriptionValue = CreateLabel("", ref yPos, maxWidth: 350);
         yPos += 20;
 
         var separator = new Panel
@@ -53,35 +45,20 @@ public class BookDetailPanel : Panel
         Controls.Add(separator);
         yPos += 20;
 
-        lblAuthor = CreateLabel("Author:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblAuthorValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Author:", ref yPos, fontStyle: FontStyle.Bold);
+        lblAuthorValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblIsbn = CreateLabel("ISBN:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblIsbnValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("ISBN:", ref yPos, fontStyle: FontStyle.Bold);
+        lblIsbnValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblPageCount = CreateLabel("Page Count:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblPageCountValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Page Count:", ref yPos, fontStyle: FontStyle.Bold);
+        lblPageCountValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblGenre = CreateLabel("Genre:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblGenreValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
-    }
-
-    private Label CreateLabel(string text, Font font, ref int yPos, int maxWidth = 400)
-    {
-        var label = new Label
-        {
-            Text = text,
-            Font = font,
-            Location = new Point(0, yPos),
-            AutoSize = true,
-            MaximumSize = new Size(maxWidth, 0)
-        };
-        Controls.Add(label);
-        yPos += label.PreferredHeight;
-        return label;
+        CreateLabel("Genre:", ref yPos, fontStyle: FontStyle.Bold);
+        lblGenreValue = CreateLabel("", ref yPos);
     }
 
     public void LoadBook(Book book)

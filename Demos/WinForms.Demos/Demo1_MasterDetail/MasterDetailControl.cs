@@ -1,7 +1,7 @@
-using WinForms.Demos.Demo1.ProductTypes;
-using WinForms.Demos.Demo1.DetailPanels;
+using WinForms.Demos.Demo1_MasterDetail.ProductTypes;
+using WinForms.Demos.Demo1_MasterDetail.DetailPanels;
 
-namespace WinForms.Demos.Demo1;
+namespace WinForms.Demos.Demo1_MasterDetail;
 
 public class MasterDetailControl : UserControl
 {
@@ -17,19 +17,21 @@ public class MasterDetailControl : UserControl
 
     public MasterDetailControl()
     {
-        products = new List<Product>
-        {
+        products =
+        [
             new Book
             {
                 Id = 1,
                 Name = "The Hobbit",
                 Price = 12.99m,
-                Description = "A fantasy novel about Bilbo Baggins' adventure to win a share of the treasure guarded by Smaug the dragon.",
+                Description =
+                    "A fantasy novel about Bilbo Baggins' adventure to win a share of the treasure guarded by Smaug the dragon.",
                 Author = "J.R.R. Tolkien",
                 Isbn = "978-0547928227",
                 PageCount = 300,
                 Genre = "Fantasy"
             },
+
             new Electronics
             {
                 Id = 2,
@@ -41,6 +43,7 @@ public class MasterDetailControl : UserControl
                 WarrantyMonths = 24,
                 PowerConsumption = "65W"
             },
+
             new Book
             {
                 Id = 3,
@@ -52,6 +55,7 @@ public class MasterDetailControl : UserControl
                 PageCount = 464,
                 Genre = "Programming"
             },
+
             new Clothing
             {
                 Id = 4,
@@ -63,6 +67,7 @@ public class MasterDetailControl : UserControl
                 Material = "100% Cotton",
                 CareInstructions = "Machine wash cold, tumble dry low"
             },
+
             new Electronics
             {
                 Id = 5,
@@ -74,6 +79,7 @@ public class MasterDetailControl : UserControl
                 WarrantyMonths = 12,
                 PowerConsumption = "2W"
             },
+
             new Clothing
             {
                 Id = 6,
@@ -85,34 +91,32 @@ public class MasterDetailControl : UserControl
                 Material = "Polyester with down filling",
                 CareInstructions = "Dry clean only"
             }
-        };
+        ];
 
         titleLabel = new Label
         {
             Text = "Demo 1: Master-Detail Pattern",
-            Location = new Point(20, 20),
-            Size = new Size(760, 30),
+            Dock = DockStyle.Top,
+            Height = 50,
             Font = new Font("Segoe UI", 16F, FontStyle.Bold),
             TextAlign = ContentAlignment.MiddleCenter
         };
 
         productListBox = new ListBox
         {
-            Location = new Point(20, 60),
-            Size = new Size(200, 370),
+            Dock = DockStyle.Left,
+            Width = 200,
             DisplayMember = "Name"
         };
 
         detailPanel = new Panel
         {
-            Location = new Point(230, 60),
-            Size = new Size(550, 370),
+            Dock = DockStyle.Fill,
             BorderStyle = BorderStyle.FixedSingle,
             AutoScroll = true
         };
 
         InitializeComponent();
-        InitializeUI();
     }
 
     private void InitializeComponent()
@@ -123,17 +127,19 @@ public class MasterDetailControl : UserControl
         AutoScaleMode = AutoScaleMode.Font;
         Name = "MasterDetailControl";
         Size = new Size(800, 450);
+        
+        Initialize();
 
         ResumeLayout(false);
     }
 
-    private void InitializeUI()
+    private void Initialize()
     {
-        Controls.Add(titleLabel);
-        Controls.Add(productListBox);
         Controls.Add(detailPanel);
+        Controls.Add(productListBox);
+        Controls.Add(titleLabel);
 
-        foreach (var product in products)
+        foreach (Product product in products)
         {
             productListBox.Items.Add(product);
         }
@@ -149,7 +155,7 @@ public class MasterDetailControl : UserControl
             return;
         }
 
-        var selectedProduct = (Product)productListBox.SelectedItem;
+        Product? selectedProduct = (Product)productListBox.SelectedItem;
 
         detailPanel.Controls.Clear();
 
@@ -171,13 +177,10 @@ public class MasterDetailControl : UserControl
 
     private void ShowBookDetails(Book book)
     {
-        if (bookDetailPanel == null)
+        bookDetailPanel ??= new BookDetailPanel
         {
-            bookDetailPanel = new BookDetailPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         bookDetailPanel.LoadBook(book);
 
@@ -186,13 +189,10 @@ public class MasterDetailControl : UserControl
 
     private void ShowElectronicsDetails(Electronics electronics)
     {
-        if (electronicsDetailPanel == null)
+        electronicsDetailPanel ??= new ElectronicsDetailPanel
         {
-            electronicsDetailPanel = new ElectronicsDetailPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         electronicsDetailPanel.LoadElectronics(electronics);
 
@@ -201,13 +201,10 @@ public class MasterDetailControl : UserControl
 
     private void ShowClothingDetails(Clothing clothing)
     {
-        if (clothingDetailPanel == null)
+        clothingDetailPanel ??= new ClothingDetailPanel
         {
-            clothingDetailPanel = new ClothingDetailPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         clothingDetailPanel.LoadClothing(clothing);
 

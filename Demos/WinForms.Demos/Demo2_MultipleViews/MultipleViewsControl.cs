@@ -1,13 +1,13 @@
-using WinForms.Demos.Demo2.ViewPanels;
+using WinForms.Demos.Demo2_MultipleViews.ViewPanels;
 
-namespace WinForms.Demos.Demo2;
+namespace WinForms.Demos.Demo2_MultipleViews;
 
 public class MultipleViewsControl : UserControl
 {
-    private readonly Label titleLabel;
-    private readonly Panel toolbarPanel;
-    private readonly ComboBox viewModeComboBox;
-    private readonly Panel contentPanel;
+    private Label? titleLabel;
+    private Panel? toolbarPanel;
+    private ComboBox? viewModeComboBox;
+    private Panel? contentPanel;
 
     private GridViewPanel? gridViewPanel;
     private TileViewPanel? tileViewPanel;
@@ -18,16 +18,18 @@ public class MultipleViewsControl : UserControl
 
     public MultipleViewsControl()
     {
-        products = new List<Product>
-        {
-            new Product
+        products =
+        [
+            new Product()
             {
                 Id = 1,
                 Name = "The Hobbit",
                 ProductType = "Book",
                 Price = 12.99m,
-                Description = "A fantasy novel about Bilbo Baggins' adventure to win a share of the treasure guarded by Smaug the dragon."
+                Description =
+                    "A fantasy novel about Bilbo Baggins' adventure to win a share of the treasure guarded by Smaug the dragon."
             },
+
             new Product
             {
                 Id = 2,
@@ -36,6 +38,7 @@ public class MultipleViewsControl : UserControl
                 Price = 1299.99m,
                 Description = "High-performance laptop with latest processor and 16GB RAM"
             },
+
             new Product
             {
                 Id = 3,
@@ -44,6 +47,7 @@ public class MultipleViewsControl : UserControl
                 Price = 42.50m,
                 Description = "A handbook of agile software craftsmanship"
             },
+
             new Product
             {
                 Id = 4,
@@ -52,6 +56,7 @@ public class MultipleViewsControl : UserControl
                 Price = 29.99m,
                 Description = "Comfortable everyday t-shirt made from premium cotton"
             },
+
             new Product
             {
                 Id = 5,
@@ -60,6 +65,7 @@ public class MultipleViewsControl : UserControl
                 Price = 49.99m,
                 Description = "Ergonomic wireless mouse with precision tracking"
             },
+
             new Product
             {
                 Id = 6,
@@ -68,6 +74,7 @@ public class MultipleViewsControl : UserControl
                 Price = 129.99m,
                 Description = "Warm winter jacket with water-resistant outer shell"
             },
+
             new Product
             {
                 Id = 7,
@@ -76,6 +83,7 @@ public class MultipleViewsControl : UserControl
                 Price = 54.99m,
                 Description = "Elements of reusable object-oriented software"
             },
+
             new Product
             {
                 Id = 8,
@@ -84,26 +92,45 @@ public class MultipleViewsControl : UserControl
                 Price = 149.99m,
                 Description = "RGB mechanical keyboard with customizable switches"
             }
-        };
+        ];
 
+        InitializeComponent();
+    }
+
+    private void InitializeComponent()
+    {
+        SuspendLayout();
+
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        Name = "MultipleViewsControl";
+        Size = new Size(800, 450);
+
+        Initialize();
+        
+        ResumeLayout(false);
+    }
+
+    private void Initialize()
+    {
         titleLabel = new Label
         {
             Text = "Demo 2: Multiple Views",
-            Location = new Point(20, 10),
-            Size = new Size(760, 30),
+            Dock = DockStyle.Top,
+            Height = 50,
             Font = new Font("Segoe UI", 16F, FontStyle.Bold),
             TextAlign = ContentAlignment.MiddleCenter
         };
 
         toolbarPanel = new Panel
         {
-            Location = new Point(0, 50),
-            Size = new Size(800, 50),
+            Dock = DockStyle.Top,
+            Height = 50,
             BackColor = SystemColors.ControlLight,
             BorderStyle = BorderStyle.FixedSingle
         };
 
-        var viewModeLabel = new Label
+        Label viewModeLabel = new()
         {
             Text = "View Mode:",
             Location = new Point(20, 15),
@@ -129,40 +156,21 @@ public class MultipleViewsControl : UserControl
 
         contentPanel = new Panel
         {
-            Location = new Point(0, 100),
-            Size = new Size(800, 350),
+            Dock = DockStyle.Fill,
             BorderStyle = BorderStyle.FixedSingle,
             AutoScroll = true
         };
-
-        InitializeComponent();
-        InitializeUI();
-    }
-
-    private void InitializeComponent()
-    {
-        SuspendLayout();
-
-        AutoScaleDimensions = new SizeF(7F, 15F);
-        AutoScaleMode = AutoScaleMode.Font;
-        Name = "MultipleViewsControl";
-        Size = new Size(800, 450);
-
-        ResumeLayout(false);
-    }
-
-    private void InitializeUI()
-    {
-        Controls.Add(titleLabel);
-        Controls.Add(toolbarPanel);
+        
         Controls.Add(contentPanel);
+        Controls.Add(toolbarPanel);
+        Controls.Add(titleLabel);
 
         SwitchViewMode(ViewMode.Grid);
     }
 
     private void ViewModeComboBox_SelectedIndexChanged(object? sender, EventArgs e)
     {
-        if (viewModeComboBox.SelectedItem is ViewMode selectedMode)
+        if (viewModeComboBox?.SelectedItem is ViewMode selectedMode)
         {
             SwitchViewMode(selectedMode);
         }
@@ -170,8 +178,10 @@ public class MultipleViewsControl : UserControl
 
     private void SwitchViewMode(ViewMode viewMode)
     {
-        if (currentViewMode == viewMode && contentPanel.Controls.Count > 0)
+        if (currentViewMode == viewMode || contentPanel == null)
+        {
             return;
+        }
 
         currentViewMode = viewMode;
         contentPanel.Controls.Clear();
@@ -192,43 +202,34 @@ public class MultipleViewsControl : UserControl
 
     private void ShowGridView()
     {
-        if (gridViewPanel == null)
+        gridViewPanel ??= new GridViewPanel
         {
-            gridViewPanel = new GridViewPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         gridViewPanel.LoadProducts(products);
-        contentPanel.Controls.Add(gridViewPanel);
+        contentPanel?.Controls.Add(gridViewPanel);
     }
 
     private void ShowTileView()
     {
-        if (tileViewPanel == null)
+        tileViewPanel ??= new TileViewPanel
         {
-            tileViewPanel = new TileViewPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         tileViewPanel.LoadProducts(products);
-        contentPanel.Controls.Add(tileViewPanel);
+        contentPanel?.Controls.Add(tileViewPanel);
     }
 
     private void ShowCardView()
     {
-        if (cardViewPanel == null)
+        cardViewPanel ??= new CardViewPanel
         {
-            cardViewPanel = new CardViewPanel
-            {
-                Dock = DockStyle.Fill
-            };
-        }
+            Dock = DockStyle.Fill
+        };
 
         cardViewPanel.LoadProducts(products);
-        contentPanel.Controls.Add(cardViewPanel);
+        contentPanel?.Controls.Add(cardViewPanel);
     }
 }

@@ -22,13 +22,12 @@ public class DynamicFormControl : UserControl
 
     private void InitializeUI()
     {
-        // TODO: Implémenter la démo Dynamic Form Composition
         var label = new Label
         {
             Text = "Demo 3: Dynamic Form Composition - À implémenter",
-            Location = new Point(20, 20),
-            AutoSize = true,
-            Font = new Font("Segoe UI", 14F, FontStyle.Bold)
+            Dock = DockStyle.Fill,
+            Font = new Font("Segoe UI", 14F, FontStyle.Bold),
+            TextAlign = ContentAlignment.MiddleCenter
         };
 
         Controls.Add(label);

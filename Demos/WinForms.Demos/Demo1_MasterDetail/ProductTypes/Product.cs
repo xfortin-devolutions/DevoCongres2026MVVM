@@ -1,11 +1,11 @@
-namespace WinForms.Demos.Demo1.ProductTypes;
+namespace WinForms.Demos.Demo1_MasterDetail.ProductTypes;
 
 public abstract class Product
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public decimal Price { get; set; }
-    public string Description { get; set; } = string.Empty;
+    public int Id { get; init; }
+    public string Name { get; init; } = string.Empty;
+    public decimal Price { get; init; }
+    public string Description { get; init; } = string.Empty;
 
     public abstract string ProductType { get; }
 

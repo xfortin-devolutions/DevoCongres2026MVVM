@@ -1,5 +1,5 @@
-using WinForms.Demos.Demo1;
-using WinForms.Demos.Demo2;
+using WinForms.Demos.Demo1_MasterDetail;
+using WinForms.Demos.Demo2_MultipleViews;
 using WinForms.Demos.Demo3;
 
 namespace WinForms.Demos;

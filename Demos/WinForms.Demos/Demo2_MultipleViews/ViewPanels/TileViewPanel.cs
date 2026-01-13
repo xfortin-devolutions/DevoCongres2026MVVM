@@ -1,4 +1,4 @@
-namespace WinForms.Demos.Demo2.ViewPanels;
+namespace WinForms.Demos.Demo2_MultipleViews.ViewPanels;
 
 public class TileViewPanel : Panel
 {
@@ -6,7 +6,6 @@ public class TileViewPanel : Panel
 
     public TileViewPanel()
     {
-        AutoScroll = true;
         Padding = new Padding(10);
 
         flowLayoutPanel = new FlowLayoutPanel
@@ -25,67 +24,70 @@ public class TileViewPanel : Panel
     {
         flowLayoutPanel.Controls.Clear();
 
-        foreach (var product in products)
+        foreach (Product product in products)
         {
-            var tilePanel = CreateTilePanel(product);
+            Panel tilePanel = CreateTilePanel(product);
             flowLayoutPanel.Controls.Add(tilePanel);
         }
     }
 
     private Panel CreateTilePanel(Product product)
     {
-        var panel = new Panel
+        Panel panel = new()
         {
-            Width = 200,
-            Height = 150,
-            Margin = new Padding(10),
+            Width = 400,
+            Height = 300,
+            Margin = new Padding(20),
             BorderStyle = BorderStyle.FixedSingle,
-            BackColor = SystemColors.Window,
-            Padding = new Padding(15)
+            BackColor = SystemColors.Window
         };
 
-        int yPos = 0;
+        const int MARGIN = 20;
+        int yPos = MARGIN;
+        const int CONTENT_WIDTH = 360;
 
-        var nameLabel = new Label
+        Label nameLabel = new()
         {
             Text = product.Name,
-            Location = new Point(0, yPos),
-            Width = 170,
-            Height = 40,
+            Location = new Point(MARGIN, yPos),
+            Width = CONTENT_WIDTH,
+            Height = 80,
             Font = new Font("Segoe UI", 10F, FontStyle.Bold),
             AutoEllipsis = true
         };
         panel.Controls.Add(nameLabel);
-        yPos += 45;
+        yPos += 80;
 
-        var typeLabel = new Label
+        Label typeLabel = new()
         {
             Text = product.ProductType,
-            Location = new Point(0, yPos),
-            Width = 170,
+            Location = new Point(MARGIN, yPos),
+            Width = CONTENT_WIDTH,
+            Height = 40,
             Font = new Font("Segoe UI", 9F),
             ForeColor = SystemColors.GrayText
         };
         panel.Controls.Add(typeLabel);
-        yPos += 25;
+        yPos += 44;
 
-        var priceLabel = new Label
+        Label priceLabel = new()
         {
             Text = $"${product.Price:F2}",
-            Location = new Point(0, yPos),
-            Width = 170,
+            Location = new Point(MARGIN, yPos),
+            Width = CONTENT_WIDTH,
+            Height = 50,
             Font = new Font("Segoe UI", 12F, FontStyle.Bold),
             ForeColor = Color.FromArgb(0, 120, 215)
         };
         panel.Controls.Add(priceLabel);
-        yPos += 30;
+        yPos += 54;
 
-        var descLabel = new Label
+        Label descLabel = new()
         {
             Text = product.Description,
-            Location = new Point(0, yPos),
-            Width = 170,
-            Height = 40,
+            Location = new Point(MARGIN, yPos),
+            Width = CONTENT_WIDTH,
+            Height = 60,
             Font = new Font("Segoe UI", 8F),
             AutoEllipsis = true
         };

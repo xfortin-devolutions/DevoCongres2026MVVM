@@ -1,18 +1,9 @@
-using WinForms.Demos.Demo1.ProductTypes;
+using WinForms.Demos.Demo1_MasterDetail.ProductTypes;
 
-namespace WinForms.Demos.Demo1.DetailPanels;
+namespace WinForms.Demos.Demo1_MasterDetail.DetailPanels;
 
-public class ElectronicsDetailPanel : Panel
+public class ElectronicsDetailPanel : DetailPanel
 {
-    private readonly Label lblTitle;
-    private readonly Label lblName;
-    private readonly Label lblPrice;
-    private readonly Label lblDescription;
-    private readonly Label lblBrand;
-    private readonly Label lblModelNumber;
-    private readonly Label lblWarranty;
-    private readonly Label lblPowerConsumption;
-
     private readonly Label lblNameValue;
     private readonly Label lblPriceValue;
     private readonly Label lblDescriptionValue;
@@ -21,26 +12,27 @@ public class ElectronicsDetailPanel : Panel
     private readonly Label lblWarrantyValue;
     private readonly Label lblPowerConsumptionValue;
 
+    public override bool AutoScroll => true;
+
     public ElectronicsDetailPanel()
     {
-        AutoScroll = true;
         Padding = new Padding(20);
 
         int yPos = 0;
 
-        lblTitle = CreateLabel("Electronics Details", new Font("Segoe UI", 16F, FontStyle.Bold), ref yPos);
+        CreateLabel("Electronics Details", ref yPos, fontStyle: FontStyle.Bold, isTitle: true);
         yPos += 20;
 
-        lblName = CreateLabel("Name:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblNameValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Name:", ref yPos, fontStyle: FontStyle.Bold);
+        lblNameValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblPrice = CreateLabel("Price:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblPriceValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Price:", ref yPos, fontStyle: FontStyle.Bold);
+        lblPriceValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblDescription = CreateLabel("Description:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblDescriptionValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos, maxWidth: 350);
+        CreateLabel("Description:", ref yPos, fontStyle: FontStyle.Bold);
+        lblDescriptionValue = CreateLabel("", ref yPos, maxWidth: 350);
         yPos += 20;
 
         var separator = new Panel
@@ -53,35 +45,20 @@ public class ElectronicsDetailPanel : Panel
         Controls.Add(separator);
         yPos += 20;
 
-        lblBrand = CreateLabel("Brand:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblBrandValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Brand:", ref yPos, fontStyle: FontStyle.Bold);
+        lblBrandValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblModelNumber = CreateLabel("Model Number:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblModelNumberValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Model Number:", ref yPos, fontStyle: FontStyle.Bold);
+        lblModelNumberValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblWarranty = CreateLabel("Warranty:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblWarrantyValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
+        CreateLabel("Warranty:", ref yPos, fontStyle: FontStyle.Bold);
+        lblWarrantyValue = CreateLabel("", ref yPos);
         yPos += 10;
 
-        lblPowerConsumption = CreateLabel("Power Consumption:", new Font("Segoe UI", 9F, FontStyle.Bold), ref yPos);
-        lblPowerConsumptionValue = CreateLabel("", new Font("Segoe UI", 9F), ref yPos);
-    }
-
-    private Label CreateLabel(string text, Font font, ref int yPos, int maxWidth = 400)
-    {
-        var label = new Label
-        {
-            Text = text,
-            Font = font,
-            Location = new Point(0, yPos),
-            AutoSize = true,
-            MaximumSize = new Size(maxWidth, 0)
-        };
-        Controls.Add(label);
-        yPos += label.PreferredHeight;
-        return label;
+        CreateLabel("Power Consumption:", ref yPos, fontStyle: FontStyle.Bold);
+        lblPowerConsumptionValue = CreateLabel("", ref yPos);
     }
 
     public void LoadElectronics(Electronics electronics)
